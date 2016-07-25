@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="js/mui.min.js"></script>
+		<link href="css/mui.css" rel="stylesheet" />
+		<link href="css/iconfont.css" rel="stylesheet" />
+		<title></title>
+
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<div class="mui-slider">
+				<div class="mui-slider-group mui-slider-loop">
+					<!--支持循环，需要重复图片节点-->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#"><img src="http://192.168.191.1:8084/YaoCity/img/scene2.jpg" /></a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#"><img src="http://192.168.191.1:8084/YaoCity/img/scene4.png" /></a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#"><img src="http://192.168.191.1:8084/YaoCity/img/scene3.jpg" /></a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#"><img src="http://192.168.191.1:8084/YaoCity/img/scene5.jpg" /></a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#"><img src="http://192.168.191.1:8084/YaoCity/img/scene2.jpg" /></a>
+					</div>
+					<!--支持循环，需要重复图片节点-->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#"><img src="http://192.168.191.1:8084/YaoCity/img/scene4.png" /></a>
+					</div>
+				</div>
+				<div class="mui-slider-indicator mui-text-center">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
+			</div>
+			<ul class="mui-table-view mui-grid-view mui-grid-9">
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<a id='hotel' href="#">
+						<span class="mui-icon iconfont icon-jiudian" style="color: #F44336;"></span>
+						<div class="mui-media-body" style="font-size: 14px;line-height: 20px;">酒店</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<a id="food" href="#">
+						<span class="mui-icon iconfont icon-meishi" style="color: #673AB7;"></span>
+						<div class="mui-media-body" style="font-size: 14px;line-height: 20px;">美食</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<a id="movie" href="#">
+						<span class="mui-icon iconfont icon-dianying" style="color: #8BC34A;"></span>
+						<div class="mui-media-body" style="font-size: 14px;line-height: 20px;">电影</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<a id="fun" href="#">
+						<span class="mui-icon iconfont icon-yule" style="color: #FF9800;"></span>
+						<div class="mui-media-body" style="font-size: 14px;line-height: 20px;">娱乐</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<a id="sale" href="#">
+						<span class="mui-icon iconfont icon-tuangou" style="color: #FF5722;"></span>
+						<div class="mui-media-body" style="font-size: 14px;line-height: 20px;">团购</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<a id="spetial" href="#">
+						<span class="mui-icon iconfont icon-tese" style="color: #3F51B5;"></span>
+						<div class="mui-media-body" style="font-size: 14px;line-height: 20px;">特色</div>
+					</a>
+				</li>
+			</ul>
+			<div style=" width:100%; text-align:center;font-size: 14px;color: #aaa;">
+				<hr style=" width:35%; display:inline-block" /> 精品发现
+				<hr style=" width:35%; display:inline-block" />
+			</div>
+			<ul class="mui-table-view mui-grid-view">
+				<li class="mui-table-view-cell mui-media mui-col-xs-6">
+					<a href="#">
+						<img class="mui-media-object" src="http://192.168.191.1:8084/YaoCity/img/culture1.jpg">
+						<div class="mui-media-body">ads1</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-6">
+					<a href="#">
+						<img class="mui-media-object" src="http://192.168.191.1:8084/YaoCity/img/culture2.jpg">
+						<div class="mui-media-body">ads2</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-6">
+					<a href="#">
+						<img class="mui-media-object" src="http://192.168.191.1:8084/YaoCity/img/culture3.jpg">
+						<div class="mui-media-body">ads3</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-6">
+					<a href="#">
+						<img class="mui-media-object" src="http://192.168.191.1:8084/YaoCity/img/culture4.jpg">
+						<div class="mui-media-body">ads4</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script src="js/app/serveselect.js"></script>
+	<script>
+		var gallery = mui('.mui-slider');
+		gallery.slider({
+			interval: 3000 //自动轮播周期，若为0则不自动播放，默认为0；
+		});
+	</script>
+
+</html>

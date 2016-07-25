@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/mui.min.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<script src="js/app/login.js"></script>
+		<script type="text/javascript" charset="UTF-8">
+			mui.init();
+		</script>
+		<style>
+			li {
+				text-align: center;
+				padding: 0;
+				margin: 0;
+				line-height: 35px;
+			}
+			
+			ul {
+				top: 44px;
+			}
+			
+			.logininput {
+				text-align: center;
+				background-color: #fff;
+				width: 100%;
+				position: absolute;
+				top: 44px;
+			}
+			
+			.part {
+				margin: 0 auto;
+				padding: 10px;
+				padding-left: 20px;
+				color: #666;
+				font-size: 16px;
+				text-align: left;
+				width: 95%;
+				height: 60px;
+				border-bottom: 1px solid #ddd;
+				line-height: 40px;
+			}
+			
+			.part input {
+				background-color: #fff;
+				border: none;
+				outline: none;
+				width: 70%;
+				height: 40px;
+				float: right;
+			}
+			
+			.btnpart {
+				margin: 0 auto;
+				padding: 10px;
+				text-align: center;
+				height: 60px;
+				width: 100%;
+				border-bottom: 1px solid #ccc;
+			}
+			
+			.btnpart input {
+				border: none;
+				color: #666;
+				outline: none;
+				font-size: 16px;
+				background-color: rgb(176, 224, 230);
+				width: 90%;
+				height: 40px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header id="head" class="mui-bar mui-bar-nav" style="background: #00BCD4;">
+			<a id='hidectrl' class="mui-icon mui-icon-left-nav mui-pull-left" style="color: #fff;"></a>
+			<a class="mui-icon mui-icon-reply mui-pull-right"></a>
+			<h1 class="mui-title" style="color: #fff;">用户注册</h1>
+		</header>
+		<div class="mui-content">
+			<div class="logininput">
+				<div class="part">
+					用户名:
+					<input id="reg-name" type="text" placeholder="请输入用户名" />
+				</div>
+				<div class="part">
+					密码:
+					<input id="reg-pass" type="password" placeholder="请输入密码" />
+				</div>
+				<div class="part">
+					确认密码:
+					<input id="passagain" type="password" placeholder="确认密码" />
+				</div>
+				<div class="part">
+					手机号:
+					<input id="reg-tel" type="tel" placeholder="请输入手机号" />
+				</div>
+				<div class="part">
+					电子邮箱:
+					<input id="reg-email" type="email" placeholder="请输入邮箱" />
+				</div>
+				<div class="part">
+					真实姓名:
+					<input id="reg-realname" type="text" />
+				</div>
+				<div class="btnpart">
+					<input id="regis-in" type="button" value="点击注册"></input>
+				</div>
+			</div>
+		</div>
+
+	</body>
+	<script>
+		document.getElementById('hidectrl').addEventListener('tap', function() {
+			plus.webview.currentWebview().hide('slide-out-right');
+		}, false);
+		document.getElementById('regis-in').addEventListener('tap', registerajax);
+	</script>
+	</body>
+
+</html>

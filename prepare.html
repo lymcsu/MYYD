@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/mui.min.js"></script>
+		<link href="css/mui.css" rel="stylesheet" />
+		<link href="css/iconfont.css" rel="stylesheet" />
+		<script type="text/javascript" charset="UTF-8">
+			mui.init({
+				subpages: [{
+					url: "youji.html", //下拉刷新内容页面地址
+					id: "youji", //内容页面标志
+					styles: {
+						top: '97px',
+						bottom: '0px'
+					}
+				}]
+			});
+		</script>
+		<style>
+			/*#M_Toggle{
+				top:90px;
+			}*/
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<div>
+				<ul class="mui-table-view mui-grid-view mui-grid-9">
+					<li class="mui-table-view-cell mui-media mui-col-xs-3">
+						<a id='info' href="#">
+							<span class="mui-icon iconfont icon-gonglve1" style="color: #8BC34A;"></span>
+							<div class="mui-media-body" style="line-height: 20px;font-size: 13px;color: #555;">概况简介</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-3">
+						<a id='prep' href="#">
+							<span class="mui-icon iconfont icon-qianqizhunbei" style="color: #FF9800;"></span>
+							<div class="mui-media-body" style="line-height: 20px;font-size: 13px;color: #555;">前期准备</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-3">
+						<a id='price' href="#">
+							<span class="mui-icon iconfont icon-jiage" style="color: #3F51B5;"></span>
+							<div class="mui-media-body" style="line-height: 20px;font-size: 13px;color: #555555;">物价信息</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-3">
+						<a id='judge' href="#">
+							<span class="mui-icon iconfont icon-pingjia-copy" style="color: #FF5722;"></span>
+							<div class="mui-media-body" style="line-height: 20px;font-size: 13px;color: #555;">游客评价</div>
+						</a>
+					</li>
+				</ul>
+			</div>	
+		</div>
+	</body>
+	<script src="js/app/prepare.js"></script>
+
+</html>

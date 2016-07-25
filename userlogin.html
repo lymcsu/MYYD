@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/mui.min.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<script src="js/app/login.js"></script>
+		<script type="text/javascript" charset="UTF-8">
+			mui.init();
+		</script>
+		<style>
+			li {
+				text-align: center;
+				padding: 0;
+				margin: 0;
+				line-height: 35px;
+			}
+			
+			ul {
+				top: 44px;
+			}
+			
+			.logininput {
+				text-align: center;
+				background-color: #fff;
+				width: 100%;
+				position: absolute;
+				top: 44px;
+			}
+			
+			.part {
+				margin: 0 auto;
+				padding: 10px;
+				padding-left: 20px;
+				color: #666;
+				font-size: 16px;
+				text-align: left;
+				width: 95%;
+				height: 60px;
+				border-bottom: 1px solid #ddd;
+				line-height: 40px;
+			}
+			
+			.part input {
+				background-color: #fff;
+				border: none;
+				outline: none;
+				width: 80%;
+				height: 40px;
+				float: right;
+			}
+			
+			.btnpart {
+				margin: 0 auto;
+				padding: 10px;
+				text-align: center;
+				height: 60px;
+				width: 100%;
+				border-bottom: 1px solid #ccc;
+			}
+			
+			.btnpart input {
+				border: none;
+				color: #666;
+				outline: none;
+				font-size: 16px;
+				background-color: rgb(176, 224, 230);
+				width: 90%;
+				height: 40px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header id="head" class="mui-bar mui-bar-nav" style="background: #00BCD4;">
+			<a id='hidectrl' class="mui-icon mui-icon-left-nav mui-pull-left" style="color: #fff;"></a>
+			<a class="mui-icon mui-icon-reply mui-pull-right"></a>
+			<h1 class="mui-title" style="color: #fff;">用户登录</h1><a id="regisbtn" style="color: #F2F2F2;float:right;margin-top: 15px ;margin-right: 10px;">注册</a>
+		</header>
+		<div class="mui-content">
+			<div class="logininput">
+				<div class="part">
+					用户名:
+					<input id='user-name' type="text" placeholder="请输入用户名" />
+				</div>
+				<div class="part">
+					密码:
+					<input id='user-pass' type="password" placeholder="请输入密码" />
+				</div>
+				<div class="btnpart">
+					<input id='log-in' type="button" value="点击进入"></input>
+				</div>
+			</div>
+		</div>
+
+	</body>
+	<script>
+		mui.ready(function() {
+			document.getElementById('hidectrl').addEventListener('tap', function() {
+				plus.webview.currentWebview().hide('slide-out-right');
+			}, false);
+		})
+	</script>
+
+</html>

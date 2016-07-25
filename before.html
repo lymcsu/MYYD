@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/mui.min.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<script type="text/javascript" charset="UTF-8">
+			mui.init();
+		</script>
+		<script src="js/app/connector.js"></script>
+		<link href="css/info.css" rel="stylesheet"/>
+	</head>
+
+	<body>
+		<header id="head" class="mui-bar mui-bar-nav" style="background: #00BCD4;">
+			<a id='hidectrl' class="mui-icon mui-icon-left-nav mui-pull-left" style="color: #fff;"></a>
+			<a class="mui-icon mui-icon-reply mui-pull-right"></a>
+			<h1 class="mui-title" style="color: #fff;">前期准备</h1>
+		</header>
+		<div class="mui-content">
+			<div class='tit'><b>衣着用品</b></div>
+			<p class='cont'>1.最好带上雨伞，天气多变且森林覆盖率大、适度大<br/>2.带上一些现金，进入农村很难取到钱<br/>3. 带好指数为30以上的防晒用品、蚊不叮、墨镜、遮阳帽以及换的内衣及袜子，一些纸巾（及湿纸巾）和消毒用的湿纸巾，鞋子要穿厚底防滑的运动鞋。<br/>4. 备上创可贴、消炎片、止泻片等药品。<br/>5. 最好带上手电筒，虽然不至于晚上爬山，但是难保没来得及下来。<br/>6. 带上生活洗漱用品：毛巾、牙膏、牙刷、洗发水、沐浴露等，湖南大部分酒店宾馆都不提供一次性洗漱用品的。毛巾可带几条，爬山时会出大量的汗水，也会使用到毛巾。</p>
+			<div class='tit'><b>旅游时间</b></div>
+			<p class="cont">最佳旅游季节 全年皆宜<br />建议游玩天数 2-3天<br />江华的春天风景如画，美不胜收。群峰竞秀，生态优良，展现了一幅“山水生态一体，人文自然相融”的旅游画卷，令人目不暇接，流连忘返。四季气候宜人，夏无酷暑，冬无严寒，山肥水美，风光绮丽，是旅游、避暑、度假的理想胜地。</p>
+			<div class="tit"><b>出行须知</b></div>
+			<p class='cont' style="border-bottom: 1px solid #ddd;"><b>重要电话</b><br/>江华瑶族自治县旅游局：0746-2323432<br/>江华县政府：0746-2332709</p>
+			<p class='cont'><b>特别提示</b><br/>当地语言为西南官话湘南片、湘南土话、江华瑶语,若为自驾行最好询问路况后前往，施工较多。</p>
+			<div class="tit"><b>历史天气</b></div>
+			<div style="margin: 0 auto; width:80%; height:400px;text-align: center;color: #777;font-size: 16px;">
+				<div style="width: 300px;height: 50px;position: relative;line-height: 30px;padding: 5px;">
+					<span>选择月份</span><br />
+					<select id='month' onchange="getweather()" style="width: 30%;height: 40px;">
+						 <option value="volvo">1</option>
+  						 <option value="saab">2</option>
+ 						 <option value="opel">3</option>
+						 <option value="audi">4</option>
+						 <option value="audi">5</option>
+						 <option value="audi">6</option>
+						 <option value="audi">7</option>
+						 <option value="audi">8</option>
+						 <option value="audi">9</option>
+						 <option value="audi">10</option>
+						 <option value="audi">11</option>
+						 <option value="audi">12</option>
+					</select> 
+					
+				</div>
+				<canvas id="can1" width="300px" height="250px" style="">
+    			</canvas>
+    			<div style="border-radius:10px;background-color: #DDDDDD;height: 40px;width: 60%;margin:0 auto;">
+    				<span id='tem' style="line-height: 40px;">平均气温：7℃ ~ 17℃</span>
+    			</div>
+				<table border="1" style="width:100%;display: none;" id="tab1">
+					<caption>天气</caption>
+					<thead>
+						<th>天气</th>
+						<th>晴天</th>
+						<th>阴雨</th>
+					</thead>
+					<tbody>
+						<tr style="text-align: center">
+							<th>天数</th>
+							<td id='sun'>17</td>
+							<td id='rain'>13</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+	<script>
+		document.getElementById('hidectrl').addEventListener('tap', function() {
+			plus.webview.currentWebview().hide('slide-out-right');
+		}, false);
+		var select = document.getElementById('month');
+
+		function getweather() {
+			connect(select.selectedIndex + 1);
+		}
+	</script>
+	<script type="text/javascript">
+		
+		var can1 = document.getElementById("can1");
+		var cxt = can1.getContext("2d");
+		var cw = parseInt(can1.width);
+		var ch = parseInt(can1.height);
+		var basex = 0;
+		var basey = 30;
+		var gx = cw * 0.8;
+		var gy = ch * 0.7;
+		var tab1 = document.getElementById("tab1");
+		var head_cells = tab1.tHead.rows[0].cells;
+		var head = [];
+		draw();
+		function draw() {
+			
+			cxt.clearRect(0,30,gx,ch);
+			head_cells = tab1.tHead.rows[0].cells;
+			for (var i = 1; i < head_cells.length; i++) {
+				//获取年份写入到到我们的head数组当中
+				head.push(head_cells[i].innerHTML);
+			}
+			//第三步:取得我们表当中的信息(取得第一个tbody的第一行的所有数据)
+			var value_cells = tab1.tBodies[0].rows[0].cells;
+			var value = [];
+			for (var j = 1; j < value_cells.length; j++) {
+				var v = value_cells[j].innerHTML;
+				//这里要注意进行类型转换，否则后边会出现莫名其妙的错误，像后面的求最大值，会出现错误
+				v = parseInt(v);
+				value.push(v);
+			}
+			//第四步:找出我们数据当中的最大的值，以便我们进行坐标的分配
+			var max_value = 0;
+			for (var m = 0; m < value.length; m++) {
+				if (value[m] > max_value) {
+					max_value = value[m];
+				}
+			}
+			//第六步:开始进行绘制，绘制标题的同时绘制数据
+			//首先计算一下我们每个数值所代表的像素长度
+			var each_len = gy * 0.9 / max_value;
+			//计算横轴上每个方块所占的长度
+			var each_room = gx * 0.9 / value.length;
+			//开始绘制
+			for (var h = 0; h < head.length; h++) {
+				//开始绘制
+				cxt.fillStyle = "#000";
+				cxt.font = "12px 'Arial'";
+				cxt.fillText(head[h], each_room * h + 83, gy + basey * 1.5);
+				cxt.fillText(value[h], each_room * h + 87, gy + basey * 2);
+				//33里边的方块宽度，这是一边画一边调的，所以很乱，大家可以自己调整
+				cxt.fillStyle = "#009688";
+				cxt.fillRect(each_room * h + 80, gy + basey - value[h] * each_len, 30, value[h] * each_len);
+			}
+		}
+	</script>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=eslynlzdM2Qlu9wz4dEQyTuACxsGkTII"></script>
+		<link href="css/mui.css" rel="stylesheet" />
+		<script type="text/javascript" charset="UTF-8">
+			mui.init();
+		</script>
+		<style>
+			.note {
+				text-align: center;
+				padding: 20px 30px 10px 30px;
+				color: #777777;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header id="head" class="mui-bar mui-bar-nav" style="background: #00BCD4;">
+			<a id='hidectrl' class="mui-icon mui-icon-left-nav mui-pull-left" style="color: #fff;"></a>
+			<a class="mui-icon mui-icon-reply mui-pull-right"></a>
+			<h1 class="mui-title" style="color: #fff;">概况简介</h1>
+		</header>
+		<div class="mui-content">
+			<div style="display: block;">
+				<img src="images/_011.jpg" / style="width: 100%;">
+			</div>
+			<div style="text-align: center;padding: 20px 30px 20px 30px;background-color:#fff ">
+				<p><big style="color: #000;">江华瑶族自治县</big><br />永州市唯一的少数民族自治县，湖南省唯一的瑶族自治县，是全国13个瑶族自治县中瑶族人口最多的县，被誉为<b style="color: #DD524D;">“神州瑶都”</b>。</p>
+			</div>
+			<div id="slider" class="mui-slider" style="margin-top: -18px;">
+				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted" style="background-color: #DD524D; opacity: 0.7;">
+					<a class="mui-control-item" href="#item1mobile">
+				位置
+			</a>
+					<a class="mui-control-item" href="#item2mobile">
+				气候
+			</a>
+					<a class="mui-control-item" href="#item3mobile">
+				交通
+			</a>
+					<a class="mui-control-item" href="#item4mobile">
+				名胜
+			</a>
+					<a class="mui-control-item" href="#item5mobile">
+				文化
+			</a>
+				</div>
+				<div id="sliderProgressBar" class="mui-slider-progress-bar" style="width: 20%;"></div>
+				<div class="mui-slider-group" style="margin-top: -1px;">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+						<p class="note">江华瑶族自治县地处潇湘源头，位于湘、粤、桂三省（区）结合部。县城距南宁530公里、距长沙460公里、距广州370公里，到桂林两江国际机场220公里，到郴州高铁站170公里，码市镇距广州260公里，地理坐标为东经110°25′-112°10′，北纬24°38′-25°15′，南北长77.92公里，东西宽72.5公里 ，总面积3248平方公里。</p>
+					</div>
+					<div id="item2mobile" class="mui-slider-item mui-control-content">
+						<p class="note">江华瑶族自治县 具有气候温和，雨量充沛，冬寒期短，夏无酷暑，无霜期长，湿度大，晨雾多，风速小的气候特点。年平均气温18℃一18.5℃，一月平均气温7.4℃，七月平均气温26.5℃。极端高温39℃，极端低温-5℃，年平均相对湿度 81%，年降水量1510mm，春季阴雨多。</p>
+					</div>
+					<div id="item3mobile" class="mui-slider-item mui-control-content">
+						<p class="note">截至2013年，江华瑶族自治县境内，洛湛铁路穿越县城，道贺高速、G207线贯通南北，S355线横穿东西，周边的厦蓉高速、永蓝高速建成通车，桂广高速、贵广高铁即将通车。<br /><br /><a id='map'>点此进入地图查看</a></p>
+					</div>
+					<div id="item4mobile" class="mui-slider-item mui-control-content">
+						<p class="note">江华瑶族自治县名胜古迹有：佛爷岩、阳华岩、寒亭暖谷、西佛古桥、浪石寺、狮子岩、不老泉、秦岩、豸山古寺、瑶族图腾园、秦岩旅游风景区、黄龙山原始森林区、火车站广场、盘王殿、码市大龙山、大圩镇宝镜古居、姑婆山等。</p>
+					</div>
+					<div id="item5mobile" class="mui-slider-item mui-control-content">
+						<p class="note">江华县文化遗产有奏铛、盘王大歌、放炮节、赶鸟节、盘王节、瑶族婚嫁等具有鲜明民族特色和地方色彩的民族民间文化活动。更有瑶家十八酿、瑶家泡茶、江华豆腐丸、瑶家腊肉、荷叶米粉肉等地方特产。</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script>
+		document.getElementById('hidectrl').addEventListener('tap', function() {
+			plus.webview.currentWebview().hide('slide-out-right');
+		}, false);
+		document.getElementById('map').addEventListener('tap', function() {
+			var myGeo = new BMap.Geocoder();
+			var dst = new plus.maps.Point(110.2,25.3);
+			var	src = new plus.maps.Point(112.91, 28.2);
+			
+			plus.maps.openSysMap(dst, "江华瑶族自治县", src);
+			// 调用系统地图显示 
+		});
+	</script>
+
+</html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/mui.min.js"></script>
+		<link href="css/mui.css" rel="stylesheet" />
+		<script>
+			mui.init();
+		</script>
+		<style>
+			html,
+			body {
+				background-color: #EFEFF4;
+			}
+			
+			.mui-bar~.mui-content .mui-fullscreen {
+				top: 44px;
+				height: auto;
+			}
+			
+			.mui-pull-top-tips {
+				position: absolute;
+				top: -20px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+				z-index: 1;
+			}
+			
+			.mui-bar~.mui-pull-top-tips {
+				top: 24px;
+			}
+			
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				overflow: hidden;
+			}
+			
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			
+			.mui-pull-top-tips .mui-pull-loading {
+				/*-webkit-backface-visibility: hidden;
+				-webkit-transition-duration: 400ms;
+				transition-duration: 400ms;*/
+				margin: 0;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon,
+			.mui-pull-top-wrapper .mui-spinner {
+				margin-top: 7px;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon.mui-reverse {
+				/*-webkit-transform: rotate(180deg) translateZ(0);*/
+			}
+			
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+			
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				box-shadow: 0 4px 10px #bbb;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+			
+			.mui-slider-indicator.mui-segmented-control {
+				background-color: #efeff4;
+			}
+			
+			#div1 {
+				width: 100%;
+				height: 50px;
+				background-color: #00BCD4;
+				text-align: center;
+				position: relative;
+			}
+			
+			#div2 {
+				width: 90%;
+				height: 26px;
+				position: absolute;
+				left: 5%;
+				top: 25%;
+				border-radius: 10px;
+				background-color: rgba(255, 255, 255, 0.9);
+				font-size: 14px;
+				color: #CCCCCC;
+				padding: 8px;
+			}
+			
+			#sceneli {
+				padding: 20px;
+			}
+			
+			#flexbox {
+				position: absolute;
+				width: 100%;
+				bottom: 0px;
+				height: 70px;
+				display: -webkit-box;
+			}
+			
+			#flex1 {
+				-webkit-box-flex: 1;
+				margin: 3px 1px 0px 3px;
+				background: #8F8F94;
+				text-align: center;
+				line-height: 70px;
+				color: #fff;
+			}
+			
+			#flex2 {
+				-webkit-box-flex: 1;
+				margin: 3px 3px 0px 1px;
+				background: #32B9AB;
+				text-align: center;
+				line-height: 70px;
+				color: #fff;
+			}
+			
+			#flex1:active {
+				background: #777;
+			}
+			
+			#flex2:active {
+				background: #555555;
+			}
+			
+			.leftimg {
+				float: left;
+				max-width: 120px;
+				display: block;
+			}
+			
+			.frame {
+				color: #555555;
+				font-size: 12px;
+				float: left;
+				padding-left: 30px;
+			}
+			
+			.name {
+				line-height: 20px;
+				width: 20%;
+				font-size: 18px;
+				height: 30px;
+				padding: 10px 0px 10px 0px;
+			}
+			
+			.assess {
+				line-height: 40px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<div id="div1">
+				<div class="mui-icon mui-icon-search" id="div2">
+					搜索景区
+				</div>
+			</div>
+			<div id="slider" class="mui-slider mui-fullscreen" style="top:50px !important;height: 398px !important;background-color: #F2F2F2;">
+				<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<div class="mui-scroll" style="background-color: #32B9AB;width: 100%;">
+						<a id="Cus" class="mui-control-item mui-active" href="#item1mobile">
+							瑶风篇
+						</a>
+						<a id="Tas" class="mui-control-item" href="#item2mobile">
+							美食篇
+						</a>
+						<a id="Sce" class="mui-control-item" href="#item3mobile">
+							美景篇
+						</a>
+						<a id="Pic" class="mui-control-item" href="#item4mobile">
+							摄影篇
+						</a>
+					</div>
+				</div>
+				<div class="mui-slider-group">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+						<div id="scroll1" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul id='cuslist' class="mui-table-view">
+
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item2mobile" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul id='taslist' class="mui-table-view">
+
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item3mobile" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul id='scelist' class="mui-table-view">
+
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item4mobile" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul id='piclist' class="mui-table-view">
+
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id='flexbox'>
+				<div id='flex1'>自由行</div>
+				<div id='flex2'>跟团游</div>
+			</div>
+
+		</div>
+	</body>
+	<script src="js/lib/mui.pulltorefresh.js"></script>
+	<script>
+		(function($) {
+			//阻尼系数
+			var deceleration = mui.os.ios ? 0.003 : 0.0009;
+			$('.mui-scroll-wrapper').scroll({
+				bounce: false,
+				indicators: true, //是否显示滚动条
+				deceleration: deceleration
+			});
+			$.ready(function() {
+				//循环初始化所有下拉刷新，上拉加载。
+				$.each(document.querySelectorAll('.mui-slider-group .mui-scroll'), function(index, pullRefreshEl) {
+					$(pullRefreshEl).pullToRefresh({
+						down: {
+							callback: function() {
+								var a_li = document.getElementsByTagName('a');
+								var active_ = null;
+								for (var i in a_li) {
+									var a_ = a_li[i];
+									if (a_.className == "mui-control-item mui-active") {
+										active_ = a_;
+									}
+								}
+								var id_ = active_.id;
+								if (id_ == "Cus") {
+									var type = "Custom";
+									listview = document.getElementById('cuslist');
+								} else if (id_ == "Tas") {
+									var type = "Taste";
+									listview = document.getElementById('taslist');
+								} else if (id_ == "Sce") {
+									var type = "Scene";
+									listview = document.getElementById('scelist');
+								} else if (id_ == "Pic") {
+									var type = "Pict";
+									listview = document.getElementById('piclist');
+								}
+								var self = this;
+								var urls = "http://192.168.191.1:8084/hcfy/CustomServer";
+								mui.ajax(urls, {
+									data: {
+										type: type
+									},
+									type: 'GET',
+									timeout: 10000,
+									success: function(data) {
+										if (!data) {
+											plus.nativeUI.toast('哎呀,没有更多数据了');
+											self.endPullDownToRefresh();
+											return;
+										}
+										var cusinfo = [];
+										var info = [];
+										cusinfo = data.split(";");
+										for (var i = 0; i < cusinfo.length; i++) {
+											info[i] = JSON.parse(cusinfo[i]);
+										}
+										listview.innerHTML = "";
+										for (var j = 0; j < info.length; j++) {
+											var list = document.createElement("li");
+											list.className = 'mui-table-view-cell';
+											var div_left = document.createElement("div");
+											div_left.className = "leftimg";
+											var img_ = document.createElement("img");
+											img_.src = "http://192.168.191.1:8084/YaoCity/" + info[j].img;
+											img_.height = "80";
+											var div_frame = document.createElement("div");
+											div_frame.className = "frame";
+											var div_name = document.createElement("div");
+											var a_ = document.createElement("a");
+											a_.id = info[j].id;
+											div_name.className = "name";
+											div_name.innerHTML = info[j].name;
+											var div_assess = document.createElement("div");
+											div_assess.className = "assess";
+											div_assess.innerHTML = info[j].assess;
+											div_frame.appendChild(div_name);
+											div_frame.appendChild(div_assess);
+											div_left.appendChild(img_);
+											a_.appendChild(div_left);
+											a_.appendChild(div_frame);
+											list.appendChild(a_);
+											listview.appendChild(list);
+										}
+									}
+								});
+								self.endPullDownToRefresh();
+							}
+						},
+						up: {
+							callback: function() {
+								var self = this;
+								self.endPullUpToRefresh();
+							}
+						}
+					});
+				});
+			});
+		})(mui);
+	</script>
+	<script>
+		if (window.plus) {
+			firefunc();
+		} else {
+			document.addEventListener('plusready', firefunc, false);
+		}
+
+		function firefunc() {
+			detailPage = plus.webview.getWebviewById('detailinfo');
+			mui('.mui-table-view').on('tap', 'a', function(e) {
+				var id = this.getAttribute('id');
+				//获得详情页面
+				alert(id);
+				//触发详情页面的newsId事件
+				var a_li = document.getElementsByTagName('a');
+				var active_ = null;
+				for (var i in a_li) {
+					var a_ = a_li[i];
+					if (a_.className == "mui-control-item mui-active") {
+						active_ = a_;
+					}
+				}
+				var id_ = active_.id;
+				//打开详情页面          
+				if (!detailPage) {
+					var nwaiting = plus.nativeUI.showWaiting();
+					detailPage = plus.webview.create("detailinfo.html", "detailinfo");
+					detailPage.addEventListener('loaded', function() {
+						mui.fire(detailPage, 'newsId', {
+							id: id,
+							type: id_
+						});
+						nwaiting.close();
+						detailPage.show("slide-in-right");
+					})
+				} else {
+					detailPage.close();
+					detailPage = plus.webview.create("detailinfo.html", "detailinfo");
+					detailPage.addEventListener('loaded', function() {
+						mui.fire(detailPage, 'newsId', {
+							id: id,
+							type: id_
+						});
+						nwaiting.close();
+						detailPage.show("slide-in-right");
+					});
+				};
+			});
+		}
+	</script>
+
+</html>

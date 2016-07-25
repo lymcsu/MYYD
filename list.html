@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/mui.min.js"></script>
+		<link href="css/mui.css" rel="stylesheet" />
+		<script src="js/app/Search.js"></script>
+		<script type="text/javascript" charset="UTF-8">
+		mui.init({
+			pullRefresh: {
+				container: "#refreshlist", //下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+				down: {
+					contentdown: "下拉可以刷新", //可选，在下拉可刷新状态时，下拉刷新控件上显示的标题内容
+					contentover: "释放立即刷新", //可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
+					contentrefresh: "正在刷新...", //可选，正在刷新状态时，下拉刷新控件上显示的标题内容
+					callback: pulldownrefresh //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+				},
+				up: {
+					contentrefresh: "正在加载...", //可选，正在加载状态时，上拉加载控件上显示的标题内容
+					contentnomore: '没有更多数据了', //可选，请求完毕若没有更多数据时显示的提醒内容；
+					callback: pullupfresh //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+				}
+			}
+		});
+
+		function pullupfresh() {
+			this.endPullupToRefresh(true | false);
+		}
+	</script>
+		<style>
+			/*item-list*/
+			
+			.item-list {}
+			
+			.item-list.item-list-detail {
+				margin-bottom: 5px;
+			}
+			
+			.item-list-title {
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				padding: 8px;
+				border: 1px solid #e7e7e7;
+			}
+			
+			.item-list-title .flex-1 {
+				-webkit-box-flex: 4;
+				-webkit-flex: 4;
+				flex: 4;
+			}
+			
+			.item-list-title .flex-1 .title {
+				font-size: 16px;
+			}
+			
+			.item-list-title .flex-1 div {
+				margin-bottom: 6px;
+			}
+			
+			.item-list-title .flex-2 div {
+				display: block height: 19px;
+				line-height: 19px;
+				margin-bottom: 6px;
+			}
+			
+			.item-list-title .flex-1 div:last-child,
+			.item-list-title .flex-2 div:last-child {
+				margin-bottom: 0;
+			}
+			
+			.item-list-title .flex-1 .info {
+				font-size: 12px;
+				color: #999;
+			}
+			
+			.item-list-title .flex-1 .info .score {
+				color: #f49d1a;
+			}
+			
+			.item-list-title .flex-1 .info .star {
+				font-size: 0;
+			}
+			
+			.item-list-title .flex-1 .info .star i {
+				font-size: 16px;
+				margin-right: 2px;
+			}
+			
+			.item-list-title .flex-2 {
+				-webkit-box-flex: 1;
+				-webkit-flex: 1;
+				flex: 1;
+				text-align: right;
+				font-size: 12px;
+				color: #999;
+			}
+			
+			.item-list li {
+				padding: 8px;
+				border-bottom: 1px solid #e7e7e7;
+				overflow: hidden;
+			}
+			
+			.item-list li .item-list-img {
+				float: left;
+				position: relative;
+				margin-right: 15px;
+				width: 120px;
+				height: 105px;
+				overflow: hidden;
+			}
+			
+			.item-list.item-list-detail li .item-list-img {
+				width: 67px;
+				height: 61px;
+				position: relative;
+			}
+			
+			.item-list.item-list-detail li .item-list-info .item-list-info-1 {
+				margin-bottom: 5px;
+			}
+			
+			.item-list.item-list-detail li .item-list-info .item-list-info-1 span {
+				display: none;
+			}
+			
+			.item-list.item-list-detail li .item-list-info .item-list-info-2 {
+				display: none;
+			}
+			
+			.item-list li .item-list-info {
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-flex-direction: column;
+				flex-direction: column;
+				overflow: hidden;
+			}
+			
+			.item-list li .item-list-info .item-list-info-1 {
+				padding: 5px 0;
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-flex-direction: row;
+				flex-direction: row;
+				-webkit-box-flex: 1;
+				-webkit-flex: 1;
+				flex: 1;
+			}
+			
+			.item-list li .item-list-info .item-list-info-1 h3 {
+				color: #333;
+				font-weight: 400;
+				font-size: 16px;
+				-webkit-box-flex: 2;
+				-webkit-flex: 2;
+				flex: 2;
+			}
+			
+			.item-list li .item-list-info .item-list-info-1 span {
+				font-size: 12px;
+				color: #999;
+			}
+			
+			.item-list li .item-list-info .item-list-info-2 {
+				padding: 5px 0;
+				line-height: 1.5;
+			}
+			
+			.item-list li .item-list-info .item-list-info-2 p {
+				font-size: 14px;
+				color: #999;
+				overflow: hidden;
+				display: -webkit-flex;
+				display: flex;
+				display: -webkit-box;
+				-webkit-line-clamp: 2;
+				-webkit-box-orient: vertical;
+				-webkit-flex-direction: column;
+				flex-direction: column;
+			}
+			
+			.item-list li .item-list-info .item-list-info-3 {
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-flex-direction: row;
+				flex-direction: row;
+				-webkit-box-align: center;
+				-webkit-align-items: center;
+				align-items: center;
+				-webkit-box-align: baseline;
+				-webkit-align-items: baseline;
+				align-items: baseline;
+			}
+			
+			.item-list li .item-list-info .item-list-info-3 .flex {
+				font-size: 12px;
+				color: #999;
+				-webkit-box-flex: 1;
+				-webkit-flex: 1;
+				flex: 1;
+			}
+			
+			.item-list li .item-list-info .item-list-info-3 .flex-1 {
+				font-size: 12px;
+				color: #999;
+				display: inline-block;
+				margin-right: 10px;
+			}
+			
+			.item-list li .item-list-info .item-list-info-3 .flex-1 em {
+				font-size: 20px;
+				font-weight: bold;
+				color: #32b9ab;
+			}
+			
+			.item-list li .item-list-info .item-list-info-3 .flex-2 {
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-pack: start;
+				-webkit-justify-content: flex-start;
+				justify-content: flex-start;
+			}
+			
+			.item-list li .item-list-info .item-list-info-3 .flex-2 span {
+				border-radius: 3px;
+				padding: 2px;
+				color: #f49d1a;
+				border: 1px solid #f49d1a;
+			}
+			
+			.item-list li .item-list-info .item-list-info-3 .flex-3 {
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-flex: 1.8;
+				-webkit-flex: 1.8;
+				flex: 1.8;
+				-webkit-box-pack: end;
+				-webkit-justify-content: flex-end;
+				justify-content: flex-end;
+			}
+			
+			.item-list-all {
+				font-size: 14px;
+				color: #32b9a8;
+				text-align: center;
+				height: 40px;
+				line-height: 40px;
+			}
+			icon
+			
+			.i-dealtype {
+				display: inline-block;
+				padding: 8px;
+				vertical-align: top;
+			}
+			
+			.i-dealtype-tuan {
+				background: url(../image/ic_global_list_lable_groupon.png) no-repeat center center;
+				-webkit-background-size: 17px;
+				background-size: 17px;
+			}
+			
+			.i-star:after {
+				content: '★';
+			}
+			
+			.i-star-gold {
+				color: #f49d1a;
+			}
+			
+			.i-star-gray {
+				color: #E2E2E2;
+				position: relative;
+			}
+			
+			.i-star-gray .i-star-gold {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 50%;
+				overflow: hidden;
+			}
+			
+			.i-arror-down {
+				display: inline-block;
+				padding: 9px;
+				background: url(../image/ic_global_arrow_down_green.png) no-repeat center top;
+				-webkit-background-size: 12px;
+				background-size: 12px;
+				vertical-align: middle;
+			}
+			
+			.i-nobooking {
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 10;
+				display: inline-block;
+				padding: 22px;
+				background: url(../image/ic_nobooking_list.png) no-repeat center top;
+				-webkit-background-size: 45px;
+				background-size: 45px;
+				vertical-align: middle;
+			}
+			
+			#priceinfo {
+				font-size: 12px;
+			}
+			
+			#money {
+				font-size: 20px;
+				color: #CF2D28;
+			}
+			
+			.main {
+				padding: 10px;
+				color: #555555;
+			}
+			
+			.part:active {
+				background-color: #ddd;
+			}
+			
+			.img {
+				float: left;
+			}
+			.image{
+				max-height: 100px;
+			}
+			.classify{
+				font-size: 11px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="refreshlist" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<div id='main' class="main">
+					<!--<div class='part'>
+						<div class='img'>
+							<img src="images/bg_default_poi_list.png" class="image">
+						</div>
+						<div class="box item-list item-list-detail">
+							<div class="tap item-list-title">
+								<div class="flex-1">
+									<div class="title">
+										<span class="poiname">夜宴酒店</span>
+									</div>
+									<div class="info">
+										<span class="star">
+                            <i class="i-star i-star-gold"></i>
+                            <i class="i-star i-star-gold"></i>
+                            <i class="i-star i-star-gold"></i>
+                            <i class="i-star i-star-gray">
+                                <i class="i-star i-star-gold"></i>
+                            </i>
+                            <i class="i-star i-star-gray"></i>
+                        </span>
+										<span class="score">3.3分</span>
+										<span class="people">(80人)</span>
+									</div>
+									<div id="priceinfo">￥<big id='money'>110</big>起</div>
+								</div>
+								<div class="flex-2">
+									<div class="distance">县政府1.4km</div>
+									<div class="classify">经济型</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class='part'>
+						<div class='img'>
+							<img src="images/bg_default_poi_list.png" class="image">
+						</div>
+						<div class="box item-list item-list-detail">
+							<div class="tap item-list-title">
+								<div class="flex-1">
+									<div class="title">
+										<span class="poiname">凯鲁亚克酒店</span>
+									</div>
+									<div class="info">
+										<span class="star">
+                            <i class="i-star i-star-gold"></i>
+                            <i class="i-star i-star-gold"></i>
+                            <i class="i-star i-star-gold"></i>
+                            <i class="i-star i-star-gold"></i>
+                            <i class="i-star i-star-gray">
+                                <i class="i-star i-star-gold"></i>
+                            </i>
+                            
+                        </span>
+										<span class="score">4.3分</span>
+										<span class="people">(183人)</span>
+									</div>
+									<div id="priceinfo">￥<big id='money'>163</big>起</div>
+								</div>
+								<div class="flex-2">
+									<div class="distance">中心广场300m</div>
+									<div class="classify">豪华型</div>
+								</div>
+							</div>
+						</div>
+					</div>-->
+				</div>
+			</div>
+	</body>
+
+</html>

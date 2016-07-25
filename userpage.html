@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/mui.min.js"></script>
+		<script src="js/app/user.js"></script>
+		<link href="css/mui.css" rel="stylesheet" />
+		<script type="text/javascript" charset="UTF-8">
+			mui.init();
+		</script>
+		<style>
+			#userlogo {
+				position: relative;
+				height: 150px;
+				background: #00BCD4;
+			}
+			#userpic{
+				width: 100px;
+				height: 100px;
+				border-radius: 50px;
+				border: 1px solid #F2F2F2;
+				position: absolute;
+				box-shadow: #555 0px 0px 10px;
+				top:25px;
+				left: 35%;
+				background: #fff;
+				opacity: 0.6;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<div id="userlogo">
+				<div id="userpic" >
+					<div class="mui-icon mui-icon-person" style="position: absolute;top: 16px;left: 16px;font-size: 65px;">
+					</div>
+			<!--		<span style="font-size: 18px;position: absolute;margin: 0 auto;">username</span>-->
+				</div>
+			</div>
+			<ul class="mui-table-view" style="margin-top: 5px;">
+				<li class="mui-table-view-cell">
+					<a id="mystore" class="mui-navigate-right">
+      					我的收藏
+   					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a id="myorder" class="mui-navigate-right">
+      					我的订单
+    				</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a id="myjudge" class="mui-navigate-right">
+      					我的游记
+    				</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view" style="margin-top: 5px;">
+				<li class="mui-table-view-cell">
+					<a id="mysettings" class="mui-navigate-right">
+      					我的设置
+   					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a id="callcenter" class="mui-navigate-right">
+      					客服
+    				</a>
+				</li>
+			</ul>
+		</div>
+	</body>
+
+</html>

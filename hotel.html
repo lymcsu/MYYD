@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/mui.min.js"></script>
+		<link href="css/mui.css" rel="stylesheet" />
+	
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=eslynlzdM2Qlu9wz4dEQyTuACxsGkTII"></script>
+		<script type="text/javascript" charset="UTF-8">
+			mui.init({
+				subpages: [{
+					url: "list.html", //下拉刷新内容页面地址
+					id: "list", //内容页面标志
+					styles: {
+						top: '94px',
+						bottom: '0px'
+					},
+					extras:{
+						mainpg:'SEARCH_HOTEL'
+					}
+				}]
+			});
+		</script>
+		<style>
+			#location {
+				width: 100%;
+				height: 50px;
+				background-color: #DDDDDD;
+				line-height: 50px;
+				text-align: center;
+				color: #777;
+				font-size: 14px;
+				padding-left: 20px;
+				border: 1px solid #AAAAAA;
+				position: absolute;
+				top: 44px;
+			}
+			
+			#find {
+				float: right;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<header id="head" class="mui-bar mui-bar-nav" style="background: #00BCD4;">
+				<a id='hidectrl' class="mui-icon mui-icon-left-nav mui-pull-left" style="color: #fff;"></a>
+				<a class="mui-icon mui-icon-reply mui-pull-right"></a>
+				<h1 id='tt' class="mui-title" style="color: #fff;">酒店预订</h1>
+				<span id="find" class="mui-icon mui-icon-search"></span>
+			</header>
+			<div id='location'>
+				<span id='loc' style="float: left;">清水路升华公寓33栋</span>
+				<span id='reloc' class="mui-icon mui-icon-refreshempty" style="float: right;font-size: 30px;display: inline-block;line-height: 50px;"></span>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		document.getElementById('reloc').addEventListener("tap", searchloc, false);
+		var x = document.getElementById('loc');
+
+		function searchloc() {
+			if (plus.geolocation) {
+				plus.geolocation.getCurrentPosition(showPosition, showError, {
+					maximumAge: 60000,
+					timeout: 50000
+				});
+			} else {
+				x.innerHTML = "Geolocation is not supported by this browser.";
+			}
+		}
+
+		function showPosition(position) {
+			var point = new BMap.Point(position.coords.longitude,position.coords.latitude);
+			var geoc = new BMap.Geocoder();
+			geoc.getLocation(point, function(rs){
+			var addComp = rs.addressComponents;
+			x.innerHTML = addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber;
+		});
+		}
+
+		function showError(error) {
+			alert(error.message);
+		}
+	</script>
+	<script>
+		document.getElementById('hidectrl').addEventListener('tap', function() {
+			plus.webview.currentWebview().hide('slide-out-right');
+		}, false);
+		
+	</script>
+
+</html>

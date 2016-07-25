@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/mui.min.js"></script>
+		<link href="css/mui.css" rel="stylesheet" />
+		<script type="text/javascript" charset="UTF-8">
+			mui.init({
+				subpages: [{
+					url: "youji.html", //下拉刷新内容页面地址
+					id: "youji1", //内容页面标志
+					styles: {
+						top: '44px',
+						bottom: '0px'
+					}
+				}]
+			});
+		</script>
+
+	</head>
+
+	<body>
+			<header id="head" class="mui-bar mui-bar-nav" style="background: #00BCD4;">
+				<a id='hidectrl' class="mui-icon mui-icon-left-nav mui-pull-left" style="color: #fff;"></a>
+				<a class="mui-icon mui-icon-reply mui-pull-right"></a>
+				<h1 class="mui-title" style="color: #fff;">游客随笔</h1>
+			</header>
+			<div class="mui-content"></div>
+	</body>
+	<script>
+		document.getElementById('hidectrl').addEventListener('tap', function() {
+			plus.webview.currentWebview().hide('slide-out-right');
+		}, false);
+	</script>
+
+</html>

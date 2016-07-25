@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/mui.min.js"></script>
+		<link href="css/mui.css" rel="stylesheet" />
+		<script type="text/javascript" charset="UTF-8">
+			mui.init();
+		</script>
+		<style>
+			#find {
+				float: right;
+			}
+			
+			#imgpart {
+				width: 100%;
+				height: 200px;
+			}
+			
+			#contpart {
+				width: 100%;
+				height: 250px;
+				background-color: #F2F2F2;
+				padding: 15px;
+				text-align: center;
+			}
+			
+			#contpart p {
+				font-size: 16px;
+				color: #000;
+			}
+			
+			#btnpart {
+				width: 100%;
+				display: -webkit-flex;
+				height: 70px;
+				background-color: goldenrod;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<header id="head" class="mui-bar mui-bar-nav" style="background: #00BCD4;">
+			<a id='hidectrl' class="mui-icon mui-icon-left-nav mui-pull-left" style="color: #fff;"></a>
+			<a class="mui-icon mui-icon-reply mui-pull-right"></a>
+			<h1 class="mui-title" style="color: #fff;">景点信息</h1>
+		</header>
+		<div id='outer' class="mui-content">
+
+		</div>
+	</body>
+	<script>
+		document.getElementById('hidectrl').addEventListener('tap', function() {
+			plus.webview.currentWebview().hide('slide-out-right');
+		}, false);
+	</script>
+	<script>
+		window.addEventListener('newsId', function(event) {
+			//获得事件参数
+			var id = event.detail.id;
+			var type = event.detail.type;
+			if (type == "Cus") {
+				type = "Custom";
+			} else if (type == "Tas") {
+				type = "Taste";
+			} else if (type == "Sce") {
+				type = "Scene";
+			} else if (type == "Pic") {
+				type = "Pict";
+			}
+			var urls = "http://192.168.191.1:8084/hcfy/CustomServer";
+			mui.ajax(urls, {
+				data: {
+					type: type,
+					id: id
+				},
+				type: 'GET',
+				timeout: 10000,
+				success: function(data) {
+					if (!data) {
+						plus.nativeUI.toast('哎呀,没有更多数据了');
+						return;
+					}
+					var datajson = JSON.parse(data);
+					alert(datajson.img);
+					var div_img = document.createElement('div');
+					div_img.id = 'imgpart';
+					var img_ = document.createElement('img');
+					img_.height = "100%";
+					img_.width = "100%";
+					var src = "http://192.168.191.1:8084/YaoCity/" + datajson.img;
+					img_.src = getCharFromUtf8(src);
+					alert(img_.src);
+					var div_cont = document.createElement('div');
+					div_cont.id = 'contpart';
+					var p_ = document.createElement('p');
+					p_.innerHTML = datajson.info;
+					var div_btn = document.createElement('div');
+					div_btn.id = 'btnpart';
+					div_img.appendChild(img_);
+					div_cont.appendChild(p_);
+					var outdiv = document.getElementById('outer');
+					outdiv.appendChild(div_img);
+					outdiv.appendChild(div_cont);
+					outdiv.appendChild(div_btn);
+				},
+				error: function() {
+					alert("failed");
+				}
+			});
+			//根据id向服务器请求新闻详情
+		});
+
+		function getCharFromUtf8(str) {
+			var cstr = "";
+			var nOffset = 0;
+			if (str == "")
+				return "";
+			str = str.toLowerCase();
+			nOffset = str.indexOf("%e");
+			if (nOffset == -1)
+				return str;
+			while (nOffset != -1) {
+				cstr += str.substr(0, nOffset);
+				str = str.substr(nOffset, str.length - nOffset);
+				if (str == "" || str.length < 9)
+					return cstr;
+				cstr += utf8ToChar(str.substr(0, 9));
+				str = str.substr(9, str.length - 9);
+				nOffset = str.indexOf("%e");
+			}
+			return cstr + str;
+		}
+	</script>
+
+</html>

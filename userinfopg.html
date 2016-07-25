@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/mui.min.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<script src="js/app/user.js"></script>
+		<script type="text/javascript" charset="UTF-8">
+			mui.init();
+		</script>
+		<style>
+			li {
+				padding: 20px !important;
+				line-height: 20px;
+			}
+			
+			input {
+				margin: 5px;
+				border: none;
+				outline: none;
+				position: absolute;
+				right: 0;
+				top: 15px;
+				font-size: 18px;
+				width: 70%;
+				text-align: right;
+				color: #888;
+			}
+			
+			#popdiv {
+				text-align: center;
+				height: 160px;
+				width: 250px;
+				background-color: #fafafa;
+				padding: 15px;
+				border-radius: 8px;
+				box-shadow: 0 0 8px #888;
+				position: fixed;
+				top: 40%;
+				left: 50%;
+				margin-left: -125px;
+				margin-top: -80px;
+				display: none;
+			}
+			
+			.btnpart {
+				margin: 0 auto;
+				padding: 0;
+				text-align: center;
+				height: 60px;
+				width: 100%;
+			}
+			
+			.btnpart input {
+				border: none;
+				color: #666;
+				outline: none;
+				font-size: 16px;
+				background-color: rgb(176, 224, 230);
+				width: 90%;
+				height: 40px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header id="head" class="mui-bar mui-bar-nav" style="background: #00BCD4;">
+			<a id='hidectrl' class="mui-icon mui-icon-left-nav mui-pull-left" style="color: #fff;"></a>
+			<a class="mui-icon mui-icon-reply mui-pull-right"></a>
+			<h1 class="mui-title" style="color: #fff;">用户信息</h1><a id="savebtn" style="color: #F2F2F2;float:right;margin-top: 15px ;margin-right: 10px;">保存</a>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<label id="" for="save-name">用户名</label><input id="save-name" />
+				</li>
+				<li class="mui-table-view-cell">
+					<label id="" for="save-realname">真实姓名</label><input id="save-realname" />
+				</li>
+				<li class="mui-table-view-cell">
+					<label id="" for="save-tel">手机号</label><input id="save-tel" />
+				</li>
+				<li class="mui-table-view-cell">
+					<label id="" for="save-email">电子邮箱</label><input id="save-email" />
+				</li>
+			</ul>
+			<div class="btnpart">
+				<input id='logoutbtn' type="button" value="注销登录"></input>
+			</div>
+		</div>
+
+		<div id="popdiv">
+			<p style="font-size: 16px;color: #333;">确定注销登录吗?</p>
+			<div style="height: 100px;line-height: 10px;">
+				<input id="out-yes" type="button" value="确定" /><input id="out-no" type="button" value="取消" />
+			</div>
+		</div>
+	</body>
+	<script>
+		if (window.plus) {
+			logoutrd();
+		} else {
+			document.addEventListener('plusready', logoutrd);
+		}
+
+		function setInfo() {
+			if (localStorage.getItem("IS_LOGIN") == "ON") {
+			} else {
+			}
+		}
+
+		function logoutrd() {
+			document.getElementById('save-name').value = localStorage.getItem("USER_NAME");
+			document.getElementById('save-realname').value = localStorage.getItem("USER_REALNAME");
+			document.getElementById('save-tel').value = localStorage.getItem("USER_TEL");
+			document.getElementById('save-email').value = localStorage.getItem("USER_EMAIL");
+			var popdiv = document.getElementById("popdiv");
+			document.getElementById('logoutbtn').addEventListener("tap", function() {
+				popdiv.style.display = "block";
+			})
+			document.getElementById('out-no').addEventListener('tap', function() {
+				popdiv.style.display = "none";
+			})
+			document.getElementById('out-yes').addEventListener('tap', function() {
+				localStorage.clear();
+				plus.webview.getWebviewById('userinfopg').close();
+				popdiv.style.display = "none";
+				plus.webview.currentWebview().hide("slide-out-right");
+			})
+			document.getElementById('hidectrl').addEventListener('tap', function() {
+				plus.webview.currentWebview().hide('slide-out-right');
+			}, false);
+		};
+	</script>
+
+</html>

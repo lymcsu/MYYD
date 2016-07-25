@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/mui.min.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/info.css" rel="stylesheet" />
+		<script type="text/javascript" charset="UTF-8">
+			mui.init();
+		</script>
+	</head>
+
+	<body>
+		<header id="head" class="mui-bar mui-bar-nav" style="background: #00BCD4;">
+			<a id='hidectrl' class="mui-icon mui-icon-left-nav mui-pull-left" style="color: #fff;"></a>
+			<a class="mui-icon mui-icon-reply mui-pull-right"></a>
+			<h1 class="mui-title" style="color: #fff;">物价信息</h1>
+		</header>
+		<div class="mui-content">
+			<div class='tit'><b>食宿费用</b></div>
+			<p class='cont'>1.江华县住宿一般酒店标间价格在90-140之间，高级酒店价格在200以下，住宿费用较低。<br/> 2.如果在小饭店吃饭一顿人均20元就可以吃的很好了，菜量大且口味偏重，特色菜品有口味蛇、寡鸡蛋、酿豆腐等。
+			</p>
+			<div class='tit'><b>交通费用</b></div>
+			<p class='cont'>在江华县最方便的交通工具是摩的或者出租车，因为县城面积较小公交车很少。打摩的的话在县城内15元哪都能去，出租车则是起步10元不打表到哪都10元。如果要包车去郊区或农村的景点则视距离在100-300不等,或乘坐班车但班次很少。</p>
+			<div class='tit'><b>景点门票</b></div>
+			<p class='cont'>九龙井景区门票原价为20元一人，秦岩景区门票原价为60元一人...学生军人等享受优惠。</p>
+		</div>
+	</body>
+	<script>
+		document.getElementById('hidectrl').addEventListener('tap', function() {
+			plus.webview.currentWebview().hide('slide-out-right');
+		}, false);
+	</script>
+
+</html>

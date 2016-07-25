@@ -1,0 +1,267 @@
+{
+	"index.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"images/33.jpg",
+			"images/44.jpg",
+			"images/22.jpg",
+			"images/55.jpg",
+			"fonts/mui.ttf",
+			"mainpage.html",
+			"css/mui.css",
+			"js/app/tabpage.js",
+			"css/iconfont.css",
+			"fonts/iconfont.ttf",
+			"prepare.html"
+		],
+		"refer": [
+			"mainpage.html",
+			"scene.html",
+			"userpage.html",
+			"prepare.html"
+		]
+	},
+	"mainpage.html": {
+		"resources": [
+			"images/33.jpg",
+			"images/44.jpg",
+			"images/22.jpg",
+			"images/55.jpg",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"css/mui.css",
+			"fonts/mui.ttf",
+			"css/iconfont.css",
+			"fonts/iconfont.ttf",
+			"js/app/serveselect.js"
+		],
+		"refer": [
+			"hotel.html",
+			"food.html",
+			"fun.html",
+			"movie.html",
+			"sale.html",
+			"spetial.html"
+		]
+	},
+	"userpage.html": {
+		"resources": [
+			"images/44.jpg",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.css",
+			"js/app/user.js"
+		],
+		"refer": [
+			"userlogin.html",
+			"userregister.html",
+			"userinfopg.html"
+		]
+	},
+	"scene.html": {
+		"resources": [
+			"css/mui.min.css",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.css",
+			"images/44.jpg",
+			"images/55.jpg",
+			"images/bg1.jpg",
+			"images/_011.jpg",
+			"js/lib/mui.pulltorefresh.js"
+		],
+		"refer": [
+			"detailinfo.html"
+		]
+	},
+	"prepare.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/iconfont.css",
+			"fonts/iconfont.ttf",
+			"css/mui.css",
+			"youji.html",
+			"js/app/prepare.js"
+		],
+		"refer": [
+			"youji.html",
+			"info.html",
+			"before.html",
+			"price.html",
+			"judgement.html"
+		]
+	},
+	"youji.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/mui.css"
+		],
+		"refer": []
+	},
+	"info.html": {
+		"resources": [
+			"css/mui.min.css",
+			"fonts/mui.ttf",
+			"js/mui.min.js",
+			"images/33.jpg",
+			"images/44.jpg",
+			"images/22.jpg",
+			"images/55.jpg",
+			"images/bg1.jpg",
+			"css/mui.css",
+			"images/_011.jpg"
+		],
+		"refer": []
+	},
+	"before.html": {
+		"resources": [
+			"css/mui.min.css",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"js/app/connector.js",
+			"css/info.css"
+		],
+		"refer": []
+	},
+	"judgement.html": {
+		"resources": [
+			"css/mui.min.css",
+			"js/mui.min.js",
+			"youji.html",
+			"fonts/mui.ttf",
+			"css/mui.css"
+		],
+		"refer": [
+			"youji.html"
+		]
+	},
+	"price.html": {
+		"resources": [
+			"css/info.css",
+			"css/mui.min.css",
+			"fonts/mui.ttf"
+		],
+		"refer": []
+	},
+	"hotel.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.css",
+			"list.html",
+			"js/app/serveselect.js",
+			"js/app/findhotel.js"
+		],
+		"refer": [
+			"list.html"
+		]
+	},
+	"list.html": {
+		"resources": [
+			"css/mui.min.css",
+			"images/bg_default_poi_list.png",
+			"js/mui.min.js",
+			"css/mui.css",
+			"js/app/findhotel.js",
+			"js/app/serveselect.js",
+			"js/app/Search.js"
+		],
+		"refer": []
+	},
+	"food.html": {
+		"resources": [
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/mui.min.js",
+			"list.html",
+			"js/app/findhotel.js",
+			"css/mui.css"
+		],
+		"refer": [
+			"list.html"
+		]
+	},
+	"fun.html": {
+		"resources": [
+			"fonts/mui.ttf",
+			"list.html",
+			"js/mui.min.js",
+			"css/mui.css"
+		],
+		"refer": [
+			"list.html"
+		]
+	},
+	"movie.html": {
+		"resources": [
+			"css/mui.min.css",
+			"list.html",
+			"js/mui.min.js",
+			"fonts/mui.ttf"
+		],
+		"refer": [
+			"list.html"
+		]
+	},
+	"sale.html": {
+		"resources": [
+			"fonts/mui.ttf",
+			"list.html",
+			"js/mui.min.js",
+			"css/mui.css"
+		],
+		"refer": [
+			"list.html"
+		]
+	},
+	"spetial.html": {
+		"resources": [
+			"list.html",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.css"
+		],
+		"refer": [
+			"list.html"
+		]
+	},
+	"detailinfo.html": {
+		"resources": [
+			"css/mui.min.css",
+			"js/mui.min.js",
+			"css/mui.css",
+			"fonts/mui.ttf",
+			"images/_011.jpg"
+		]
+	},
+	"userlogin.html": {
+		"resources": [
+			"css/mui.min.css",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"js/app/user.js",
+			"js/app/login.js"
+		],
+		"refer": [
+			"userregister.html"
+		]
+	},
+	"userregister.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/app/login.js",
+			"js/app/user.js"
+		]
+	},
+	"userinfopg.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/app/user.js"
+		]
+	}
+}
